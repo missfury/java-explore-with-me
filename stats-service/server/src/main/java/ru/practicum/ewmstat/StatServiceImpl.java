@@ -7,6 +7,7 @@ import ru.practicum.ewmstat.exceptions.ValidationException;
 import ru.practicum.ewmstat.model.StatHit;
 import ru.practicum.ewmstat.model.StatMapper;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -31,22 +32,9 @@ public class StatServiceImpl implements StatService {
             throw new ValidationException("Время окончания не может быть раньше времени начала");
         }
 
-        if (uris.isEmpty()) {
-            if (!unique) {
-                log.info("Получить всю статистику, где статус уникальности ip {} ", unique);
-                return repository.findStatsByUniqIp(start, end);
-            } else {
-                log.info("Получить всю статистику, где статус уникальности ip {} ", unique);
-                return repository.findAllStats(start, end);
-            }
-        } else {
-            if (!unique) {
-                log.info("Получить всю статистику, где статус уникальности ip {} при uris {} ", unique, uris);
-                return repository.findStatsByUrisAndUniqIp(start, end, uris);
-            } else {
-                log.info("Получить всю статистику, где статус уникальности ip {} где uris {} ", unique, uris);
-                return repository.findStatsWithUris(start, end, uris);
-            }
-        }
+        return (CollectionUtils.isEmpty(uris)) ?
+                (unique ? repository.findStatsByUniqIp(start, end) : repository.findAllStats(start, end)) :
+                (unique ? repository.findStatsByUrisAndUniqIp(start, end, uris) :
+                        repository.findStatsWithUris(start, end, uris));
     }
 }

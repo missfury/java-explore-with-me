@@ -16,6 +16,8 @@ import java.util.List;
 @Slf4j
 public class StatController {
     private final StatService service;
+    public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
 
     @PostMapping("/hit")
     @ResponseStatus(value = HttpStatus.CREATED)
@@ -26,11 +28,10 @@ public class StatController {
 
     @GetMapping("/stats")
     public Collection<StatsViewDto> getViewStats(
-            @RequestParam(value = "start") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime start,
-            @RequestParam(value = "end") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime end,
-            @RequestParam(value = "uris", defaultValue = "") List<String> uris,
-            @RequestParam(value = "unique", defaultValue = "false") Boolean unique
-    ) {
+            @RequestParam(value = "start") @DateTimeFormat(pattern = DATE_FORMAT) LocalDateTime start,
+            @RequestParam(value = "end") @DateTimeFormat(pattern = DATE_FORMAT) LocalDateTime end,
+            @RequestParam(value = "uris") List<String> uris,
+            @RequestParam(value = "unique", defaultValue = "false") Boolean unique) {
         log.info("Получена статистика просмотров с временем начала {} временем окончания {}," +
                 " uris {} статусом уникальности ip {}", start, end, uris, unique);
         return service.getStats(start, end, uris, unique);

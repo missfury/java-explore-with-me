@@ -1,86 +1,48 @@
 package ru.practicum.ewmstat;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import lombok.val;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.stereotype.Service;
 import org.springframework.http.*;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.web.util.DefaultUriBuilderFactory;
-import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 import java.time.LocalDateTime;
-import java.net.URI;
-import java.util.Optional;
 
-@Component
+
+@Service
 @Slf4j
 public class StatsClient {
     private static final String STATS_SERVER_BASE_URL = "http://localhost:9090";
-    private final RestTemplate restTemplate;
-    private final HttpHeaders headers = new HttpHeaders();
-    private final ObjectMapper objectMapper;
+    private final WebClient client;
 
-    public StatsClient(RestTemplateBuilder builder, ObjectMapper objectMapper) {
-        this.restTemplate = builder
-                .uriTemplateHandler(new DefaultUriBuilderFactory(STATS_SERVER_BASE_URL))
-                .requestFactory(HttpComponentsClientHttpRequestFactory::new)
-                .build();
-
-        this.objectMapper = objectMapper;
-
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setAccept(List.of(MediaType.APPLICATION_JSON));
+    public StatsClient() {
+        this.client = WebClient.create(STATS_SERVER_BASE_URL);
     }
 
-    public ResponseEntity<Void> callEndpointHit(String app, String uri, String ip) throws JsonProcessingException {
-        val endpointHitInfoDto = StatsHitDto.builder()
-                .app(app)
-                .uri(uri)
-                .ip(ip)
-                .timestamp(LocalDateTime.now())
-                .build();
-
-        val json = objectMapper.writeValueAsString(endpointHitInfoDto);
-        val requestEntity = new HttpEntity<>(json, headers);
-
-        ResponseEntity<Void> response = null;
-        try {
-            response = restTemplate.exchange(STATS_SERVER_BASE_URL + "/hit", HttpMethod.POST, requestEntity,
-                    Void.class);
-        } catch (RestClientException exp) {
-            log.warn(exp.getMessage());
-        }
-
-        return response;
+    public void callEndpointHit(String app, String uri, String ip, LocalDateTime timestamp) {
+        final StatsHitDto endpointHit = new StatsHitDto(app, uri, ip, timestamp);
+        this.client.post()
+                .uri("/hit")
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(endpointHit, StatsHitDto.class)
+                .retrieve()
+                .toBodilessEntity()
+                .block();
     }
 
-    public ResponseEntity<List<StatsViewDto>> callEndpointStats(LocalDateTime start, LocalDateTime end,
-                                                                    List<String> uris, Boolean unique) {
-        final ParameterizedTypeReference<List<StatsViewDto>> responseType = new ParameterizedTypeReference<>() {
-        };
-        final URI uri = UriComponentsBuilder.newInstance()
-                .host(STATS_SERVER_BASE_URL)
-                .path("/stats")
-                .queryParam("start", start)
-                .queryParam("end", end)
-                .queryParamIfPresent("uris", Optional.of(uris))
-                .queryParamIfPresent("unique", Optional.of(unique))
-                .build().toUri();
-
-        ResponseEntity<List<StatsViewDto>> response = null;
-        try {
-            response = restTemplate.exchange(uri, HttpMethod.GET, null, responseType);
-        } catch (RestClientException exp) {
-            log.warn(exp.getMessage());
-        }
-
-        return response;
+    public ResponseEntity<List<StatsViewDto>> callEndpointStats(String start, String end, String[] uris,
+                                                                Boolean isUnique) {
+        return client.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/stats")
+                        .queryParam("start", start)
+                        .queryParam("end", end)
+                        .queryParam("uris", uris)
+                        .queryParam("unique", isUnique)
+                        .build())
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .toEntityList(StatsViewDto.class)
+                .block();
     }
 }
