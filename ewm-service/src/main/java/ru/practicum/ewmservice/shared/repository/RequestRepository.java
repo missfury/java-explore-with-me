@@ -11,8 +11,11 @@ import java.util.Optional;
 
 public interface RequestRepository extends JpaRepository<Request, Long> {
     List<Request> findByRequesterId(long userId);
+
     Optional<Request> findByIdAndRequesterId(long requestId, long userId);
+
     List<Request> findRequestsByEventId(long eventId);
+
     @Query("SELECT r " +
             "FROM Request AS r " +
             "WHERE r.event.id = :eventId " +
@@ -38,6 +41,7 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
     List<Request> findByEventIdConfirmed(long eventId);
 
     Long countRequestByEventIdAndStatus(Long eventId, RequestStatus state);
+
     List<Request> findAllByEventInAndStatus(List<Event> event, RequestStatus status);
 
 }

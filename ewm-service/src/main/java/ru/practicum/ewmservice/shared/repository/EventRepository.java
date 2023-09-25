@@ -12,7 +12,9 @@ import java.util.Optional;
 
 public interface EventRepository extends JpaRepository<Event, Long> {
     Optional<Event> findEventByIdAndInitiatorId(long eventId, long userId);
+
     List<Event> findEventsByInitiatorId(long userId, Pageable pageable);
+
     @Query("SELECT e " +
             "FROM Event AS e " +
             "WHERE e.category.id = :categoryId")
