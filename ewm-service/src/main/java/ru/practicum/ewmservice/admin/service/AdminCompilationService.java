@@ -6,7 +6,9 @@ import ru.practicum.ewmservice.shared.dto.UpdateCompilationRequest;
 
 public interface AdminCompilationService {
     CompilationDto addCompilation(NewCompilationDto newCompilationDto);
+
     CompilationDto updateCompilation(Long compId, UpdateCompilationRequest updateCompilationRequest);
+
     void deleteCompilation(Long compId);
 
 }
