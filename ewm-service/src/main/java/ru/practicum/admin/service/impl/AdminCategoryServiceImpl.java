@@ -1,17 +1,17 @@
-package ru.practicum.ewmservice.admin.service.impl;
+package ru.practicum.admin.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.dao.DataIntegrityViolationException;
-import ru.practicum.ewmservice.admin.service.AdminCategoryService;
-import ru.practicum.ewmservice.shared.dto.CategoryDto;
-import ru.practicum.ewmservice.shared.dto.NewCategoryDto;
-import ru.practicum.ewmservice.shared.exceptions.NotAvailableException;
-import ru.practicum.ewmservice.shared.exceptions.NotFoundException;
-import ru.practicum.ewmservice.shared.mapper.CategoryMapper;
-import ru.practicum.ewmservice.shared.model.Category;
-import ru.practicum.ewmservice.shared.repository.CategoryRepository;
+import ru.practicum.admin.service.AdminCategoryService;
+import ru.practicum.shared.dto.CategoryDto;
+import ru.practicum.shared.dto.NewCategoryDto;
+import ru.practicum.shared.exceptions.NotAvailableException;
+import ru.practicum.shared.exceptions.NotFoundException;
+import ru.practicum.shared.mapper.CategoryMapper;
+import ru.practicum.shared.model.Category;
+import ru.practicum.shared.repository.CategoryRepository;
 
 @Service
 @Transactional

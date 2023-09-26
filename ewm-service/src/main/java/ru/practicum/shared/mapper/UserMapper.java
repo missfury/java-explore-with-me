@@ -1,10 +1,10 @@
-package ru.practicum.ewmservice.shared.mapper;
+package ru.practicum.shared.mapper;
 
 import org.springframework.stereotype.Component;
-import ru.practicum.ewmservice.shared.dto.NewUserRequest;
-import ru.practicum.ewmservice.shared.dto.UserDto;
-import ru.practicum.ewmservice.shared.dto.UserShortDto;
-import ru.practicum.ewmservice.shared.model.User;
+import ru.practicum.shared.dto.NewUserRequest;
+import ru.practicum.shared.dto.UserDto;
+import ru.practicum.shared.dto.UserShortDto;
+import ru.practicum.shared.model.User;
 
 @Component
 public class UserMapper {

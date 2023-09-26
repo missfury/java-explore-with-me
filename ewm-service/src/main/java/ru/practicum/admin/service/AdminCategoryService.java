@@ -1,7 +1,7 @@
-package ru.practicum.ewmservice.admin.service;
+package ru.practicum.admin.service;
 
-import ru.practicum.ewmservice.shared.dto.CategoryDto;
-import ru.practicum.ewmservice.shared.dto.NewCategoryDto;
+import ru.practicum.shared.dto.CategoryDto;
+import ru.practicum.shared.dto.NewCategoryDto;
 
 public interface AdminCategoryService {
     CategoryDto addCategory(NewCategoryDto newCategoryDto);

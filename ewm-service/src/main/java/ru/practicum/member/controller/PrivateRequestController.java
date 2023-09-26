@@ -1,11 +1,11 @@
-package ru.practicum.ewmservice.member.controller;
+package ru.practicum.member.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.ewmservice.member.service.PrivateRequestService;
-import ru.practicum.ewmservice.shared.dto.ParticipationRequestDto;
+import ru.practicum.member.service.PrivateRequestService;
+import ru.practicum.shared.dto.ParticipationRequestDto;
 
 import java.util.List;
 

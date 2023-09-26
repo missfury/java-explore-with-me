@@ -1,4 +1,4 @@
-package ru.practicum.ewmservice.shared.util;
+package ru.practicum.shared.util;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;

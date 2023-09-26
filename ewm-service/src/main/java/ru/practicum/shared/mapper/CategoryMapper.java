@@ -1,9 +1,9 @@
-package ru.practicum.ewmservice.shared.mapper;
+package ru.practicum.shared.mapper;
 
 import org.springframework.stereotype.Component;
-import ru.practicum.ewmservice.shared.dto.CategoryDto;
-import ru.practicum.ewmservice.shared.dto.NewCategoryDto;
-import ru.practicum.ewmservice.shared.model.Category;
+import ru.practicum.shared.dto.CategoryDto;
+import ru.practicum.shared.dto.NewCategoryDto;
+import ru.practicum.shared.model.Category;
 
 @Component
 public class CategoryMapper {

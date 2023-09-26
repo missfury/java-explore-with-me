@@ -1,4 +1,4 @@
-package ru.practicum.ewmstat;
+package ru.practicum;
 
 import java.time.LocalDateTime;
 import java.util.Collection;

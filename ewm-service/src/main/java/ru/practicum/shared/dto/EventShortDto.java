@@ -1,4 +1,4 @@
-package ru.practicum.ewmservice.shared.dto;
+package ru.practicum.shared.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;

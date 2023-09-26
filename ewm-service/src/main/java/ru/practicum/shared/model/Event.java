@@ -1,13 +1,11 @@
-package ru.practicum.ewmservice.shared.model;
+package ru.practicum.shared.model;
 
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
-import ru.practicum.ewmservice.shared.util.enums.State;
+import ru.practicum.shared.util.enums.State;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-
-import static ru.practicum.ewmservice.shared.util.enums.State.PENDING;
 
 @Getter
 @Setter
@@ -60,7 +58,7 @@ public class Event {
 
     @Column(name = "state", nullable = false)
     @Enumerated(value = EnumType.STRING)
-    private State state = PENDING;
+    private State state = State.PENDING;
 
     @Column(name = "created", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")

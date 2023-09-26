@@ -1,9 +1,9 @@
-package ru.practicum.ewmservice.shared.dto;
+package ru.practicum.shared.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Value;
-import ru.practicum.ewmservice.shared.model.Location;
+import ru.practicum.shared.model.Location;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;

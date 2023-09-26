@@ -1,4 +1,4 @@
-package ru.practicum.ewmstat;
+package ru.practicum;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class StatsClient {
         this.client.post()
                 .uri("/hit")
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(endpointHit, StatsHitDto.class)
+                .bodyValue(endpointHit)
                 .retrieve()
                 .toBodilessEntity()
                 .block();

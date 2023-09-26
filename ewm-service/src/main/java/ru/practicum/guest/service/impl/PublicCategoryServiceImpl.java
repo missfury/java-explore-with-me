@@ -1,15 +1,15 @@
-package ru.practicum.ewmservice.guest.service.impl;
+package ru.practicum.guest.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewmservice.guest.service.PublicCategoryService;
-import ru.practicum.ewmservice.shared.dto.CategoryDto;
-import ru.practicum.ewmservice.shared.exceptions.NotFoundException;
-import ru.practicum.ewmservice.shared.mapper.CategoryMapper;
-import ru.practicum.ewmservice.shared.model.Category;
-import ru.practicum.ewmservice.shared.repository.CategoryRepository;
+import ru.practicum.guest.service.PublicCategoryService;
+import ru.practicum.shared.dto.CategoryDto;
+import ru.practicum.shared.exceptions.NotFoundException;
+import ru.practicum.shared.mapper.CategoryMapper;
+import ru.practicum.shared.model.Category;
+import ru.practicum.shared.repository.CategoryRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

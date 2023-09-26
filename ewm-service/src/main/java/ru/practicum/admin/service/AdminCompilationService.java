@@ -1,8 +1,8 @@
-package ru.practicum.ewmservice.admin.service;
+package ru.practicum.admin.service;
 
-import ru.practicum.ewmservice.shared.dto.CompilationDto;
-import ru.practicum.ewmservice.shared.dto.NewCompilationDto;
-import ru.practicum.ewmservice.shared.dto.UpdateCompilationRequest;
+import ru.practicum.shared.dto.CompilationDto;
+import ru.practicum.shared.dto.NewCompilationDto;
+import ru.practicum.shared.dto.UpdateCompilationRequest;
 
 public interface AdminCompilationService {
     CompilationDto addCompilation(NewCompilationDto newCompilationDto);

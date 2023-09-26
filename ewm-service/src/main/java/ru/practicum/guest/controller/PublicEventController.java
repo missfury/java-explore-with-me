@@ -1,16 +1,14 @@
-package ru.practicum.ewmservice.guest.controller;
+package ru.practicum.guest.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.ewmservice.guest.service.PublicEventService;
-import ru.practicum.ewmservice.shared.dto.EventFullDto;
-import ru.practicum.ewmservice.shared.dto.EventShortDto;
-import ru.practicum.ewmservice.shared.util.enums.SortEvents;
-import ru.practicum.ewmstat.exceptions.ValidationException;
-
+import ru.practicum.guest.service.PublicEventService;
+import ru.practicum.shared.dto.EventFullDto;
+import ru.practicum.shared.dto.EventShortDto;
+import ru.practicum.shared.exceptions.ValidateException;
+import ru.practicum.shared.util.enums.SortEvents;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
@@ -26,10 +24,9 @@ public class PublicEventController {
     private final PublicEventService eventService;
 
     @GetMapping("/{id}")
-    EventFullDto getEvent(@PathVariable(value = "id") Long id
-                          ) {
+    EventFullDto getEvent(@PathVariable(value = "id") Long id, HttpServletRequest request) {
         log.info("Получена информация об опубликованном событии с id: {}", id);
-        return eventService.getEvent(id);
+        return eventService.getEvent(id, request);
     }
 
     @GetMapping
@@ -47,7 +44,7 @@ public class PublicEventController {
                                   @RequestParam(defaultValue = "10")
                                   @Positive Integer size,
                                   HttpServletRequest request) {
-        SortEvents sortParam = SortEvents.from(sort).orElseThrow(() -> new ValidationException("Sort isn't valid: "
+        SortEvents sortParam = SortEvents.from(sort).orElseThrow(() -> new ValidateException("Sort isn't valid: "
                 + sort));
         log.info("Получен список опубликованных событий");
         return eventService.getEvents(text, categories, paid,

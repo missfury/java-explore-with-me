@@ -1,4 +1,4 @@
-package ru.practicum.ewmservice.shared.util.enums;
+package ru.practicum.shared.util.enums;
 
 import java.util.Arrays;
 import java.util.Optional;

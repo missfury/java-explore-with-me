@@ -1,18 +1,18 @@
-package ru.practicum.ewmservice.admin.service.impl;
+package ru.practicum.admin.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewmservice.admin.service.AdminCompilationService;
-import ru.practicum.ewmservice.shared.dto.CompilationDto;
-import ru.practicum.ewmservice.shared.dto.NewCompilationDto;
-import ru.practicum.ewmservice.shared.dto.UpdateCompilationRequest;
-import ru.practicum.ewmservice.shared.exceptions.NotFoundException;
-import ru.practicum.ewmservice.shared.mapper.CompilationMapper;
-import ru.practicum.ewmservice.shared.model.Compilation;
-import ru.practicum.ewmservice.shared.model.Event;
-import ru.practicum.ewmservice.shared.repository.CompilationRepository;
-import ru.practicum.ewmservice.shared.repository.EventRepository;
+import ru.practicum.admin.service.AdminCompilationService;
+import ru.practicum.shared.dto.CompilationDto;
+import ru.practicum.shared.dto.NewCompilationDto;
+import ru.practicum.shared.dto.UpdateCompilationRequest;
+import ru.practicum.shared.exceptions.NotFoundException;
+import ru.practicum.shared.mapper.CompilationMapper;
+import ru.practicum.shared.model.Compilation;
+import ru.practicum.shared.model.Event;
+import ru.practicum.shared.repository.CompilationRepository;
+import ru.practicum.shared.repository.EventRepository;
 
 import java.util.Collection;
 import java.util.HashSet;

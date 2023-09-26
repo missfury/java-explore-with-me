@@ -1,11 +1,11 @@
-package ru.practicum.ewmservice.shared.dto;
+package ru.practicum.shared.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
-import ru.practicum.ewmservice.shared.model.Category;
-import ru.practicum.ewmservice.shared.model.Location;
-import ru.practicum.ewmservice.shared.model.User;
-import ru.practicum.ewmservice.shared.util.enums.State;
+import ru.practicum.shared.model.Category;
+import ru.practicum.shared.model.Location;
+import ru.practicum.shared.model.User;
+import ru.practicum.shared.util.enums.State;
 
 import java.time.LocalDateTime;
 

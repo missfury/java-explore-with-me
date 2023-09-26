@@ -1,10 +1,10 @@
-package ru.practicum.ewmservice.shared.repository;
+package ru.practicum.shared.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import ru.practicum.ewmservice.shared.model.Event;
-import ru.practicum.ewmservice.shared.model.Request;
-import ru.practicum.ewmservice.shared.util.enums.RequestStatus;
+import ru.practicum.shared.model.Event;
+import ru.practicum.shared.model.Request;
+import ru.practicum.shared.util.enums.RequestStatus;
 
 import java.util.List;
 import java.util.Optional;

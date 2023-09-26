@@ -1,4 +1,4 @@
-package ru.practicum.ewmservice.shared.model;
+package ru.practicum.shared.model;
 
 import lombok.*;
 

@@ -1,7 +1,7 @@
-package ru.practicum.ewmservice.guest.service;
+package ru.practicum.guest.service;
 
 import org.springframework.data.domain.Pageable;
-import ru.practicum.ewmservice.shared.dto.CategoryDto;
+import ru.practicum.shared.dto.CategoryDto;
 
 import java.util.List;
 

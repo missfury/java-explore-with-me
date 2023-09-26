@@ -1,11 +1,11 @@
-package ru.practicum.ewmservice.shared.mapper;
+package ru.practicum.shared.mapper;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import ru.practicum.ewmservice.shared.dto.EventFullDto;
-import ru.practicum.ewmservice.shared.dto.EventShortDto;
-import ru.practicum.ewmservice.shared.dto.NewEventDto;
-import ru.practicum.ewmservice.shared.model.Event;
+import ru.practicum.shared.dto.EventFullDto;
+import ru.practicum.shared.dto.EventShortDto;
+import ru.practicum.shared.dto.NewEventDto;
+import ru.practicum.shared.model.Event;
 
 import java.time.LocalDateTime;
 

@@ -1,11 +1,11 @@
-package ru.practicum.ewmstat;
+package ru.practicum;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import ru.practicum.ewmstat.exceptions.ValidationException;
-import ru.practicum.ewmstat.model.StatHit;
-import ru.practicum.ewmstat.model.StatMapper;
+import ru.practicum.exception.ValidationException;
+import ru.practicum.model.StatHit;
+import ru.practicum.model.StatMapper;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;

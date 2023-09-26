@@ -1,4 +1,4 @@
-package ru.practicum.ewmstat.exceptions;
+package ru.practicum.exception;
 
 public class ValidationException extends RuntimeException {
 

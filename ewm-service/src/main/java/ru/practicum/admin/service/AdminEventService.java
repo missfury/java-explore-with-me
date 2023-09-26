@@ -1,9 +1,9 @@
-package ru.practicum.ewmservice.admin.service;
+package ru.practicum.admin.service;
 
 import org.springframework.data.domain.Pageable;
-import ru.practicum.ewmservice.shared.dto.EventFullDto;
-import ru.practicum.ewmservice.shared.dto.UpdateEventAdminRequest;
-import ru.practicum.ewmservice.shared.util.enums.State;
+import ru.practicum.shared.dto.EventFullDto;
+import ru.practicum.shared.dto.UpdateEventAdminRequest;
+import ru.practicum.shared.util.enums.State;
 
 import java.time.LocalDateTime;
 import java.util.List;

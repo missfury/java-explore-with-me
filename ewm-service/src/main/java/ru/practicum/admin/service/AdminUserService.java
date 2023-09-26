@@ -1,8 +1,8 @@
-package ru.practicum.ewmservice.admin.service;
+package ru.practicum.admin.service;
 
 import org.springframework.data.domain.Pageable;
-import ru.practicum.ewmservice.shared.dto.NewUserRequest;
-import ru.practicum.ewmservice.shared.dto.UserDto;
+import ru.practicum.shared.dto.NewUserRequest;
+import ru.practicum.shared.dto.UserDto;
 
 import java.util.List;
 

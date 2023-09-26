@@ -1,15 +1,15 @@
-package ru.practicum.ewmservice.guest.service.impl;
+package ru.practicum.guest.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewmservice.guest.service.PublicCompilationService;
-import ru.practicum.ewmservice.shared.dto.CompilationDto;
-import ru.practicum.ewmservice.shared.exceptions.NotFoundException;
-import ru.practicum.ewmservice.shared.mapper.CompilationMapper;
-import ru.practicum.ewmservice.shared.model.Compilation;
-import ru.practicum.ewmservice.shared.repository.CompilationRepository;
+import ru.practicum.guest.service.PublicCompilationService;
+import ru.practicum.shared.dto.CompilationDto;
+import ru.practicum.shared.exceptions.NotFoundException;
+import ru.practicum.shared.mapper.CompilationMapper;
+import ru.practicum.shared.model.Compilation;
+import ru.practicum.shared.repository.CompilationRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

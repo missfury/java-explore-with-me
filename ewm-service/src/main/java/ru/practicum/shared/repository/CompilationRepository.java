@@ -1,8 +1,8 @@
-package ru.practicum.ewmservice.shared.repository;
+package ru.practicum.shared.repository;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.practicum.ewmservice.shared.model.Compilation;
+import ru.practicum.shared.model.Compilation;
 
 import java.util.List;
 

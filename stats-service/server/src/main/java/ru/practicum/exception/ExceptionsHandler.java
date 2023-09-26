@@ -1,4 +1,4 @@
-package ru.practicum.ewmstat.exceptions;
+package ru.practicum.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -11,7 +11,7 @@ import java.util.Map;
 
 @RestControllerAdvice
 @Slf4j
-public class ErrorHandler {
+public class ExceptionsHandler {
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

@@ -1,11 +1,11 @@
-package ru.practicum.ewmservice.shared.mapper;
+package ru.practicum.shared.mapper;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import ru.practicum.ewmservice.shared.dto.CompilationDto;
-import ru.practicum.ewmservice.shared.dto.NewCompilationDto;
-import ru.practicum.ewmservice.shared.model.Compilation;
-import ru.practicum.ewmservice.shared.model.Event;
+import ru.practicum.shared.dto.CompilationDto;
+import ru.practicum.shared.dto.NewCompilationDto;
+import ru.practicum.shared.model.Compilation;
+import ru.practicum.shared.model.Event;
 
 import java.util.Set;
 import java.util.stream.Collectors;

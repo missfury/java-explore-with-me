@@ -1,4 +1,4 @@
-package ru.practicum.ewmservice.admin.controller;
+package ru.practicum.admin.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -6,14 +6,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.ewmservice.admin.service.AdminUserService;
-import ru.practicum.ewmservice.shared.dto.NewUserRequest;
-import ru.practicum.ewmservice.shared.dto.UserDto;
-import ru.practicum.ewmservice.shared.util.Pagination;
+import ru.practicum.admin.service.AdminUserService;
+import ru.practicum.shared.dto.NewUserRequest;
+import ru.practicum.shared.dto.UserDto;
+import ru.practicum.shared.util.Pagination;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
 import java.util.List;
 
 @RestController

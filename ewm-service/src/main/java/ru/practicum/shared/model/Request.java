@@ -1,13 +1,13 @@
-package ru.practicum.ewmservice.shared.model;
+package ru.practicum.shared.model;
 
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
-import ru.practicum.ewmservice.shared.util.enums.RequestStatus;
+import ru.practicum.shared.util.enums.RequestStatus;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-import static ru.practicum.ewmservice.shared.util.enums.RequestStatus.PENDING;
+import static ru.practicum.shared.util.enums.RequestStatus.PENDING;
 
 @Getter
 @Setter

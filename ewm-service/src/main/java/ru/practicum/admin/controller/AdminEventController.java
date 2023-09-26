@@ -1,19 +1,17 @@
-package ru.practicum.ewmservice.admin.controller;
+package ru.practicum.admin.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.ewmservice.admin.service.AdminEventService;
-import ru.practicum.ewmservice.shared.dto.EventFullDto;
-import ru.practicum.ewmservice.shared.dto.UpdateEventAdminRequest;
-import ru.practicum.ewmservice.shared.util.Pagination;
-import ru.practicum.ewmservice.shared.util.enums.State;
+import ru.practicum.admin.service.AdminEventService;
+import ru.practicum.shared.dto.EventFullDto;
+import ru.practicum.shared.dto.UpdateEventAdminRequest;
+import ru.practicum.shared.util.Pagination;
+import ru.practicum.shared.util.enums.State;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDateTime;
 import java.util.List;
 

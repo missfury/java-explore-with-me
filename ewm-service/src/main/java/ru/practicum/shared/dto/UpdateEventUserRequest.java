@@ -1,9 +1,9 @@
-package ru.practicum.ewmservice.shared.dto;
+package ru.practicum.shared.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
-import ru.practicum.ewmservice.shared.model.Location;
-import ru.practicum.ewmservice.shared.util.enums.UserActions;
+import ru.practicum.shared.model.Location;
+import ru.practicum.shared.util.enums.UserActions;
 
 import javax.validation.constraints.Future;
 import javax.validation.constraints.PositiveOrZero;

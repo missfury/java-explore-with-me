@@ -1,21 +1,21 @@
-package ru.practicum.ewmservice.member.service.impl;
+package ru.practicum.member.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewmservice.member.service.PrivateRequestService;
-import ru.practicum.ewmservice.shared.dto.ParticipationRequestDto;
-import ru.practicum.ewmservice.shared.exceptions.NotFoundException;
-import ru.practicum.ewmservice.shared.exceptions.ValidateException;
-import ru.practicum.ewmservice.shared.mapper.RequestMapper;
-import ru.practicum.ewmservice.shared.model.Event;
-import ru.practicum.ewmservice.shared.model.Request;
-import ru.practicum.ewmservice.shared.model.User;
-import ru.practicum.ewmservice.shared.repository.EventRepository;
-import ru.practicum.ewmservice.shared.repository.RequestRepository;
-import ru.practicum.ewmservice.shared.repository.UserRepository;
-import ru.practicum.ewmservice.shared.util.enums.RequestStatus;
-import ru.practicum.ewmservice.shared.util.enums.State;
+import ru.practicum.member.service.PrivateRequestService;
+import ru.practicum.shared.dto.ParticipationRequestDto;
+import ru.practicum.shared.exceptions.NotFoundException;
+import ru.practicum.shared.exceptions.ValidateException;
+import ru.practicum.shared.mapper.RequestMapper;
+import ru.practicum.shared.model.Event;
+import ru.practicum.shared.model.Request;
+import ru.practicum.shared.model.User;
+import ru.practicum.shared.repository.EventRepository;
+import ru.practicum.shared.repository.RequestRepository;
+import ru.practicum.shared.repository.UserRepository;
+import ru.practicum.shared.util.enums.RequestStatus;
+import ru.practicum.shared.util.enums.State;
 
 import java.time.LocalDateTime;
 import java.util.List;

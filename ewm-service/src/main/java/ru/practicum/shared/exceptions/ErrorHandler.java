@@ -1,4 +1,4 @@
-package ru.practicum.shared.exceptions_main.handler;
+package ru.practicum.shared.exceptions;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -9,10 +9,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
-import ru.practicum.shared.exceptions_main.NotAvailableException;
-import ru.practicum.shared.exceptions_main.NotFoundException;
-import ru.practicum.shared.exceptions_main.ValidateDateException;
-import ru.practicum.shared.exceptions_main.ValidateException;
 
 import javax.validation.ConstraintViolationException;
 import java.util.Map;

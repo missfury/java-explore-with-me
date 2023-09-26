@@ -1,13 +1,13 @@
-package ru.practicum.ewmservice.admin.controller;
+package ru.practicum.admin.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.ewmservice.admin.service.AdminCompilationService;
-import ru.practicum.ewmservice.shared.dto.CompilationDto;
-import ru.practicum.ewmservice.shared.dto.NewCompilationDto;
-import ru.practicum.ewmservice.shared.dto.UpdateCompilationRequest;
+import ru.practicum.admin.service.AdminCompilationService;
+import ru.practicum.shared.dto.CompilationDto;
+import ru.practicum.shared.dto.NewCompilationDto;
+import ru.practicum.shared.dto.UpdateCompilationRequest;
 
 import javax.validation.Valid;
 

@@ -1,16 +1,16 @@
-package ru.practicum.ewmservice.admin.service.impl;
+package ru.practicum.admin.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewmservice.admin.service.AdminUserService;
-import ru.practicum.ewmservice.shared.dto.NewUserRequest;
-import ru.practicum.ewmservice.shared.dto.UserDto;
-import ru.practicum.ewmservice.shared.exceptions.NotFoundException;
-import ru.practicum.ewmservice.shared.mapper.UserMapper;
-import ru.practicum.ewmservice.shared.model.User;
-import ru.practicum.ewmservice.shared.repository.UserRepository;
+import ru.practicum.admin.service.AdminUserService;
+import ru.practicum.shared.dto.NewUserRequest;
+import ru.practicum.shared.dto.UserDto;
+import ru.practicum.shared.exceptions.NotFoundException;
+import ru.practicum.shared.mapper.UserMapper;
+import ru.practicum.shared.model.User;
+import ru.practicum.shared.repository.UserRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

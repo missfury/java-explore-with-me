@@ -1,44 +1,36 @@
-package ru.practicum.ewmservice.guest.service.impl;
+package ru.practicum.guest.service.impl;
 
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewmservice.guest.service.PublicEventService;
-import ru.practicum.ewmservice.shared.dto.EventFullDto;
-import ru.practicum.ewmservice.shared.dto.EventShortDto;
-import ru.practicum.ewmservice.shared.exceptions.NotFoundException;
-import ru.practicum.ewmservice.shared.exceptions.ValidateDateException;
-import ru.practicum.ewmservice.shared.mapper.EventMapper;
-import ru.practicum.ewmservice.shared.model.Event;
-import ru.practicum.ewmservice.shared.model.Request;
-import ru.practicum.ewmservice.shared.repository.EventRepository;
-import ru.practicum.ewmservice.shared.repository.RequestRepository;
-import ru.practicum.ewmservice.shared.util.Pagination;
-import ru.practicum.ewmservice.shared.util.enums.RequestStatus;
-import ru.practicum.ewmservice.shared.util.enums.SortEvents;
-import ru.practicum.ewmservice.shared.util.enums.State;
-import ru.practicum.ewmstat.StatsClient;
-import ru.practicum.ewmstat.StatsViewDto;
-import ru.practicum.ewmstat.model.StatMapper;
+import ru.practicum.StatsViewDto;
+import ru.practicum.guest.service.PublicEventService;
+import ru.practicum.shared.dto.EventFullDto;
+import ru.practicum.shared.dto.EventShortDto;
+import ru.practicum.shared.exceptions.NotFoundException;
+import ru.practicum.shared.exceptions.ValidateDateException;
+import ru.practicum.shared.mapper.EventMapper;
+import ru.practicum.shared.model.Event;
+import ru.practicum.shared.model.Request;
+import ru.practicum.shared.repository.EventRepository;
+import ru.practicum.shared.repository.RequestRepository;
+import ru.practicum.shared.util.Pagination;
+import ru.practicum.shared.util.enums.RequestStatus;
+import ru.practicum.shared.util.enums.SortEvents;
+import ru.practicum.shared.util.enums.State;
+import ru.practicum.StatsClient;
 
 import javax.servlet.http.HttpServletRequest;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import static ru.practicum.ewmservice.shared.util.enums.SortEvents.EVENT_DATE;
-import static ru.practicum.ewmservice.shared.util.enums.SortEvents.VIEWS;
-import static ru.practicum.ewmservice.shared.util.enums.State.PUBLISHED;
 
 @Service
 @Transactional
@@ -51,32 +43,31 @@ public class PublicEventServiceImpl implements PublicEventService {
             .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     public static final String END_DATE = LocalDateTime.now().plusDays(1000)
             .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-    public static final DateTimeFormatter START_DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     private final EventRepository eventRepository;
     private final RequestRepository requestRepository;
     private final EventMapper eventMapper;
     private final StatsClient statsClient;
-    //private final StatMapper statMapper;
+
 
     @Override
-    public EventFullDto getEvent(Long eventId) {
+    public EventFullDto getEvent(Long eventId, HttpServletRequest request) {
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new NotFoundException("Событие с id=" + eventId + " не найдено"));
         confirmedRequestsForOneEvent(event);
-        if (!event.getState().equals(PUBLISHED)) {
+        if (!event.getState().equals(State.PUBLISHED)) {
             throw new NotFoundException("Событие с id=" + eventId + " не опубликовано");
         }
         EventFullDto fullDto = eventMapper.toEventFullDto(event);
 
-        /*String[] uris;
+        String[] uris;
         uris = List.of("/events/" + event.getId()).toArray(new String[0]);
         List<StatsViewDto> views = statsClient.callEndpointStats(START_DATE, END_DATE, uris, null).getBody();
 
         if (views != null) {
             fullDto.setViews(Long.valueOf(views.size()));
         }
-        statsClient.callEndpointHit(app, request.getRequestURI(), request.getRemoteAddr(), LocalDateTime.now());*/
+        statsClient.callEndpointHit(app, request.getRequestURI(), request.getRemoteAddr(), LocalDateTime.now());
 
         return fullDto;
     }
@@ -96,10 +87,10 @@ public class PublicEventServiceImpl implements PublicEventService {
 
         validDateParam(rangeStart, rangeEnd);
         Pagination pageable;
-        final State state = PUBLISHED;
+        final State state = State.PUBLISHED;
         List<Event> events;
 
-        if (sort.equals(EVENT_DATE)) {
+        if (sort.equals(SortEvents.EVENT_DATE)) {
             pageable = new Pagination(from, size, Sort.by("eventDate"));
         } else {
             pageable = new Pagination(from, size, Sort.unsorted());
@@ -123,9 +114,9 @@ public class PublicEventServiceImpl implements PublicEventService {
                 .map(eventMapper::toEventShortDto)
                 .collect(Collectors.toList());
 
-        //statsClient.callEndpointHit(app, request.getRequestURI(), request.getRemoteAddr(), LocalDateTime.now());
+        statsClient.callEndpointHit(app, request.getRequestURI(), request.getRemoteAddr(), LocalDateTime.now());
 
-        if (sort.equals(VIEWS)) {
+        if (sort.equals(SortEvents.VIEWS)) {
             return result.stream()
                     .sorted(Comparator.comparingLong(EventShortDto::getViews))
                     .collect(Collectors.toList());
@@ -133,46 +124,6 @@ public class PublicEventServiceImpl implements PublicEventService {
 
         return result;
     }
-
-    private Pageable pageableWithSort(int from, int size, SortEvents sort) {
-        if (sort == VIEWS) {
-            return new Pagination(from, size, Sort.by("views"));
-        } else if (sort == EVENT_DATE) {
-            return new Pagination(from, size, Sort.by("eventDate"));
-        } else {
-            return new Pagination(from, size, Sort.unsorted());
-        }
-    }
-
-    private Long getId(String url) {
-        String[] uri = url.split("/");
-        return Long.valueOf(uri[uri.length - 1]);
-    }
-
-    /*private void saveViewInEvent(List<EventShortDto> result, LocalDateTime rangeStart) {
-        String[] uris;
-        uris = result.stream()
-                .map(eventShortDto -> "/events/" + eventShortDto.getId())
-                .collect(Collectors.toList()).toArray(new String[0]);
-
-        if (rangeStart != null) {
-            List<StatsViewDto> views = statsClient.callEndpointStats(
-                    rangeStart.format(START_DATE_FORMATTER), LocalDateTime.now().format(START_DATE_FORMATTER),
-                    uris, true).getBody();
-
-            if (views != null) {
-                Map<Long, Long> mapIdHits = views.stream()
-                        .collect(Collectors.toMap(viewStats -> getId(viewStats.getUri()), StatsViewDto::getHits));
-
-                result.forEach(eventShortDto -> {
-                    Long eventId = eventShortDto.getId();
-                    Long viewsCount = mapIdHits.getOrDefault(eventId, 0L);
-                    eventShortDto.setViews(viewsCount);
-                });
-            }
-        }
-    } */
-
 
     public void confirmedRequestsForOneEvent(Event event) {
         event.setConfirmedRequests(requestRepository
@@ -185,13 +136,6 @@ public class PublicEventServiceImpl implements PublicEventService {
                 throw new ValidateDateException("Время окончания не может быть раньше времени начала");
             }
         }
-    }
-
-    private LocalDateTime getRangeStart(LocalDateTime rangeStart) {
-        if (rangeStart == null) {
-            return LocalDateTime.now();
-        }
-        return rangeStart;
     }
 
     private List<Event> getEventsBeforeRangeEnd(List<Event> events, LocalDateTime rangeEnd) {
@@ -209,12 +153,4 @@ public class PublicEventServiceImpl implements PublicEventService {
         }
     }
 
-    private Long getConfirmedRequestsByEvent(Event event) {
-        return (long) requestRepository.findByEventAndStatus(event, RequestStatus.CONFIRMED).size();
-    }
-
-
-    public StatsClient getStatsClient() {
-        return statsClient;
-    }
 }

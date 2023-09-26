@@ -1,6 +1,6 @@
-package ru.practicum.ewmstat.model;
+package ru.practicum.model;
 
-import ru.practicum.ewmstat.StatsHitDto;
+import ru.practicum.StatsHitDto;
 
 public class StatMapper {
     public static StatHit statsHitDtoToStatHit(StatsHitDto statsHitDto) {

@@ -1,8 +1,8 @@
-package ru.practicum.ewmservice.shared.mapper;
+package ru.practicum.shared.mapper;
 
 import org.springframework.stereotype.Component;
-import ru.practicum.ewmservice.shared.dto.ParticipationRequestDto;
-import ru.practicum.ewmservice.shared.model.Request;
+import ru.practicum.shared.dto.ParticipationRequestDto;
+import ru.practicum.shared.model.Request;
 
 @Component
 public class RequestMapper {

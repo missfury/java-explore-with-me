@@ -1,16 +1,14 @@
-package ru.practicum.ewmservice.guest.controller;
+package ru.practicum.guest.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.ewmservice.guest.service.PublicCategoryService;
-import ru.practicum.ewmservice.shared.dto.CategoryDto;
-import ru.practicum.ewmservice.shared.util.Pagination;
+import ru.practicum.guest.service.PublicCategoryService;
+import ru.practicum.shared.dto.CategoryDto;
+import ru.practicum.shared.util.Pagination;
 
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
 import java.util.List;
 
 @Validated
