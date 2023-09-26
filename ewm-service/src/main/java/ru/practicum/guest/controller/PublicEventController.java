@@ -10,8 +10,6 @@ import ru.practicum.shared.dto.EventShortDto;
 import ru.practicum.shared.exceptions.ValidateException;
 import ru.practicum.shared.util.enums.SortEvents;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -39,10 +37,8 @@ public class PublicEventController {
                                   @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeEnd,
                                   @RequestParam(defaultValue = "false") Boolean onlyAvailable,
                                   @RequestParam(defaultValue = "EVENT_DATE") String sort,
-                                  @RequestParam(defaultValue = "0")
-                                  @PositiveOrZero Integer from,
-                                  @RequestParam(defaultValue = "10")
-                                  @Positive Integer size,
+                                  @RequestParam(defaultValue = "0") Integer from,
+                                  @RequestParam(defaultValue = "10") Integer size,
                                   HttpServletRequest request) {
         SortEvents sortParam = SortEvents.from(sort).orElseThrow(() -> new ValidateException("Sort isn't valid: "
                 + sort));

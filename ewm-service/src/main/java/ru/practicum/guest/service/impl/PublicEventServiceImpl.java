@@ -2,7 +2,6 @@ package ru.practicum.guest.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,7 +34,6 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 @RequiredArgsConstructor
-@PropertySource(value = {"classpath:application.properties"})
 public class PublicEventServiceImpl implements PublicEventService {
     @Value(value = "${app.name}")
     private String app;
