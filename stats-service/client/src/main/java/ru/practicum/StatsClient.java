@@ -1,6 +1,7 @@
 package ru.practicum;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
@@ -16,11 +17,10 @@ import java.time.LocalDateTime;
 @Configuration
 @ComponentScan
 public class StatsClient {
-    private static final String STATS_SERVER_BASE_URL = "http://localhost:9090";
     private final WebClient client;
 
-    public StatsClient() {
-        this.client = WebClient.create(STATS_SERVER_BASE_URL);
+    public StatsClient(@Value("${stats.server.url}") String baseUrl) {
+        this.client = WebClient.create(baseUrl);
     }
 
     public void callEndpointHit(String app, String uri, String ip, LocalDateTime timestamp) {

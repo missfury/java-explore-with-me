@@ -102,9 +102,7 @@ public class PublicEventServiceImpl implements PublicEventService {
                     paid, text, pageable);
         }
 
-        if (rangeEnd != null) {
-            events = getEventsBeforeRangeEnd(events, rangeEnd);
-        }
+        events = getEventsBeforeRangeEnd(events, rangeEnd);
 
         confirmedRequestForListEvent(events);
 
