@@ -14,13 +14,6 @@ import java.util.Map;
 public class ExceptionsHandler {
 
     @ExceptionHandler
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public Map<String, String> handleThrowableException(Throwable e) {
-        log.error("Код ошибки: {}, {}", HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
-        return Map.of("error", "Server Error", "errorMessage", e.getMessage());
-    }
-
-    @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> handleValidationException(ValidationException e) {
         log.error("Error Validation Exception: {}, {}", HttpStatus.BAD_REQUEST, e.getMessage());
