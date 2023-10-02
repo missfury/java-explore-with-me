@@ -23,8 +23,9 @@ public class PublicEventController {
 
     @GetMapping("/{id}")
     EventFullDto getEvent(@PathVariable(value = "id") Long id, HttpServletRequest request) {
+        EventFullDto event = eventService.getEvent(id, request);
         log.info("Получена информация об опубликованном событии с id: {}", id);
-        return eventService.getEvent(id, request);
+        return event;
     }
 
     @GetMapping
@@ -42,9 +43,10 @@ public class PublicEventController {
                                   HttpServletRequest request) {
         SortEvents sortParam = SortEvents.from(sort).orElseThrow(() -> new ValidateException("Sort isn't valid: "
                 + sort));
-        log.info("Получен список опубликованных событий");
-        return eventService.getEvents(text, categories, paid,
+        List<EventShortDto> events = eventService.getEvents(text, categories, paid,
                 rangeStart, rangeEnd, onlyAvailable, sortParam, from, size, request);
+        log.info("Получен список опубликованных событий");
+        return events;
     }
 
 }

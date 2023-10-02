@@ -32,16 +32,18 @@ public class AdminEventController {
                                         @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeEnd,
                                         @RequestParam(name = "from", defaultValue = "0") Integer from,
                                         @RequestParam(name = "size", defaultValue = "10") Integer size) {
-        log.info("Получены события пользователей {} со статусом {}, категорий {}", users, states, categories);
-        return adminEventService.getAdminEvents(users, states, categories, rangeStart, rangeEnd,
+        List<EventFullDto> events = adminEventService.getAdminEvents(users, states, categories, rangeStart, rangeEnd,
                 new Pagination(from, size, Sort.unsorted()));
+        log.info("Получены события пользователей {} со статусом {}, категорий {}", users, states, categories);
+        return events;
     }
 
     @PatchMapping("/{eventId}")
     public EventFullDto updateEvent(@PathVariable Long eventId,
                                     @Valid @RequestBody UpdateEventAdminRequest event) {
+        EventFullDto singleEvent = adminEventService.updateAdminEvent(eventId, event);
         log.info("Обновлено событие {} с id= {}", event, eventId);
-        return adminEventService.updateAdminEvent(eventId, event);
+        return singleEvent;
     }
 
 }

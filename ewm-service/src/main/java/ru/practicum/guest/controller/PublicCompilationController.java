@@ -25,13 +25,16 @@ public class PublicCompilationController {
     public List<CompilationDto> getCompilations(@RequestParam(required = false) Boolean pinned,
                                                 @RequestParam(defaultValue = "0") @PositiveOrZero Integer from,
                                                 @RequestParam(defaultValue = "10") @Positive Integer size) {
+        List<CompilationDto> compilations = compilationService.getCompilations(pinned, new Pagination(from,
+                size, Sort.unsorted()));
         log.info("Получены подборки событий");
-        return compilationService.getCompilations(pinned, new Pagination(from, size, Sort.unsorted()));
+        return compilations;
     }
 
     @GetMapping("/{compId}")
     public CompilationDto getCompilation(@PathVariable Long compId) {
+        CompilationDto compilation = compilationService.getCompilationById(compId);
         log.info("Получена подборка событий с id: {}", compId);
-        return compilationService.getCompilationById(compId);
+        return compilation;
     }
 }

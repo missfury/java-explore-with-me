@@ -21,21 +21,23 @@ public class AdminCompilationController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CompilationDto createCompilation(@RequestBody @Valid NewCompilationDto newCompilationDTO) {
+        CompilationDto compilation = compilationService.addCompilation(newCompilationDTO);
         log.info("Создана подборка событий: {}", newCompilationDTO);
-        return compilationService.addCompilation(newCompilationDTO);
+        return compilation;
     }
 
     @PatchMapping("/{compId}")
     public CompilationDto updateCompilation(@PathVariable Long compId,
                                             @Valid @RequestBody UpdateCompilationRequest updateCompilationRequest) {
+        CompilationDto compilation = compilationService.updateCompilation(compId, updateCompilationRequest);
         log.info("Обновлена подборка {} с id = {}", updateCompilationRequest, compId);
-        return compilationService.updateCompilation(compId, updateCompilationRequest);
+        return compilation;
     }
 
     @DeleteMapping("/{compId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removeCompilation(@PathVariable Long compId) {
-        log.info("Удалена подборка с id = {}", compId);
         compilationService.deleteCompilation(compId);
+        log.info("Удалена подборка с id = {}", compId);
     }
 }

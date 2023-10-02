@@ -23,14 +23,16 @@ public class PublicCategoryController {
     @GetMapping
     public List<CategoryDto> getCategories(@RequestParam(defaultValue = "0") Integer from,
                                            @RequestParam(defaultValue = "10") Integer size) {
+        List<CategoryDto> categories = publicCategoryService.getCategories(new Pagination(from, size, Sort.unsorted()));
         log.info("Получен список категорий");
-        return publicCategoryService.getCategories(new Pagination(from, size, Sort.unsorted()));
+        return categories;
     }
 
     @GetMapping("/{catId}")
     CategoryDto getCategory(@PathVariable Long catId) {
+        CategoryDto category = publicCategoryService.getCategoryById(catId);
         log.info("Найдена категория с id {}", catId);
-        return publicCategoryService.getCategoryById(catId);
+        return category;
     }
 
 }

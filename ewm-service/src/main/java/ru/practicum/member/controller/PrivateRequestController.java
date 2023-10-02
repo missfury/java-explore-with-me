@@ -20,20 +20,23 @@ public class PrivateRequestController {
     @ResponseStatus(HttpStatus.CREATED)
     ParticipationRequestDto addRequest(@PathVariable Long userId,
                                        @RequestParam Long eventId) {
+        ParticipationRequestDto request = requestService.addRequest(userId, eventId);
         log.info("Создан запрос на участие в событии с id= {} для пользователя с id= {} ", eventId, userId);
-        return requestService.addRequest(userId, eventId);
+        return request;
     }
 
     @GetMapping
     List<ParticipationRequestDto> getRequests(@PathVariable Long userId) {
+        List<ParticipationRequestDto> requests = requestService.getRequests(userId);
         log.info("Получены запросы для пользователя с id: {}", userId);
-        return requestService.getRequests(userId);
+        return requests;
     }
 
     @PatchMapping("/{requestId}/cancel")
     ParticipationRequestDto canselRequest(@PathVariable Long userId,
                                           @PathVariable Long requestId) {
+        ParticipationRequestDto request = requestService.canselRequest(userId, requestId);
         log.info("Пользователем с id= {} отменен запрос на участие в событии с id= {} ", userId, requestId);
-        return requestService.canselRequest(userId, requestId);
+        return request;
     }
 }

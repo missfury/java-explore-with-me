@@ -26,22 +26,24 @@ public class AdminUserController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public UserDto addUser(@Valid @RequestBody NewUserRequest newUserRequest) {
+        UserDto user = adminUserService.addUser(newUserRequest);
         log.info("Создан пользователь с id= {}", newUserRequest);
-        return adminUserService.addUser(newUserRequest);
+        return user;
     }
 
     @GetMapping
     public List<UserDto> getUsers(@RequestParam(required = false) List<Long> ids,
                                   @RequestParam(name = "from", defaultValue = "0") Integer from,
                                   @RequestParam(name = "size", defaultValue = "10") Integer size) {
+        List<UserDto> users = adminUserService.getUsers(ids, new Pagination(from, size, Sort.unsorted()));
         log.info("Получен список пользователей");
-        return adminUserService.getUsers(ids, new Pagination(from, size, Sort.unsorted()));
+        return users;
     }
 
     @DeleteMapping("/{userId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removeUser(@PathVariable Long userId) {
-        log.info("Удален пользователь с id= {}", userId);
         adminUserService.deleteUser(userId);
+        log.info("Удален пользователь с id= {}", userId);
     }
 }
