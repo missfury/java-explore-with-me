@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.admin.service.AdminEventService;
 import ru.practicum.shared.dto.EventFullDto;
+import ru.practicum.shared.dto.ShortLocationDto;
 import ru.practicum.shared.dto.UpdateEventAdminRequest;
 import ru.practicum.shared.exceptions.NotFoundException;
 import ru.practicum.shared.exceptions.ValidateDateException;
@@ -13,8 +14,10 @@ import ru.practicum.shared.exceptions.ValidateException;
 import ru.practicum.shared.mapper.EventMapper;
 import ru.practicum.shared.model.Category;
 import ru.practicum.shared.model.Event;
+import ru.practicum.shared.model.Location;
 import ru.practicum.shared.repository.CategoryRepository;
 import ru.practicum.shared.repository.EventRepository;
+import ru.practicum.shared.repository.LocationRepository;
 import ru.practicum.shared.repository.RequestRepository;
 import ru.practicum.shared.util.enums.AdminActions;
 import ru.practicum.shared.util.enums.RequestStatus;
@@ -31,6 +34,7 @@ public class AdminEventServiceImpl implements AdminEventService {
     private final EventRepository eventRepository;
     private final CategoryRepository categoryRepository;
     private final RequestRepository requestRepository;
+    private final LocationRepository locationRepository;
     private final EventMapper eventMapper;
 
     @Override
@@ -78,7 +82,8 @@ public class AdminEventServiceImpl implements AdminEventService {
         }
 
         if (eventAdminRequest.getLocation() != null) {
-            event.setLocation(eventAdminRequest.getLocation());
+            Location location = getLocation(eventAdminRequest.getLocation());
+            event.setLocation(location);
         }
 
         if (eventAdminRequest.getPaid() != null) {
@@ -130,6 +135,21 @@ public class AdminEventServiceImpl implements AdminEventService {
                 .orElseThrow(() -> new NotFoundException(
                         String.format("Не удалось найти категорию с id=%d", categoryId)));
     }
+
+    private Location getLocation(ShortLocationDto locationDto) {
+        Location existingLocation = locationRepository.findByLatAndLon(locationDto.getLat(), locationDto.getLon());
+
+        if (existingLocation != null) {
+            return existingLocation;
+        } else {
+            Location newLocation = new Location();
+            newLocation.setLat(locationDto.getLat());
+            newLocation.setLon(locationDto.getLon());
+
+            return locationRepository.save(newLocation);
+        }
+    }
+
 
     private Long getConfirmedRequestsByEvent(Event event) {
         return (long) requestRepository.findByEventAndStatus(event, RequestStatus.CONFIRMED).size();

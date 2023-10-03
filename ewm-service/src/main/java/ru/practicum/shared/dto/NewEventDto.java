@@ -3,7 +3,6 @@ package ru.practicum.shared.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Value;
-import ru.practicum.shared.model.Location;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -37,7 +36,7 @@ public class NewEventDto {
 
     @NotNull(message = "Location cannot be null")
     @Valid
-    private Location location;
+    private ShortLocationDto location;
 
     @NotNull(message = "Paid cannot be null")
     @Value("false")

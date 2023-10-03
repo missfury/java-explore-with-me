@@ -3,7 +3,6 @@ package ru.practicum.shared.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import ru.practicum.shared.model.Category;
-import ru.practicum.shared.model.Location;
 import ru.practicum.shared.model.User;
 import ru.practicum.shared.util.enums.State;
 
@@ -33,7 +32,7 @@ public class EventFullDto {
 
     private User initiator;
 
-    private Location location;
+    private ShortLocationDto location;
 
     private Boolean paid;
 

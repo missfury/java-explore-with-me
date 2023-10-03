@@ -6,6 +6,7 @@ import ru.practicum.shared.dto.EventFullDto;
 import ru.practicum.shared.dto.EventShortDto;
 import ru.practicum.shared.dto.NewEventDto;
 import ru.practicum.shared.model.Event;
+import ru.practicum.shared.model.Location;
 
 import java.time.LocalDateTime;
 
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 public class EventMapper {
     private final UserMapper userMapper;
     private final CategoryMapper categoryMapper;
+    private final LocationMapper locationMapper;
 
     public EventFullDto toEventFullDto(Event event) {
         return EventFullDto.builder()
@@ -28,7 +30,7 @@ public class EventMapper {
                 .createdOn(event.getCreatedOn())
                 .paid(event.getPaid())
                 .state(event.getState())
-                .location(event.getLocation())
+                .location(locationMapper.toShortLocationDto(event.getLocation()))
                 .publishedOn(event.getPublishedOn())
                 .participantLimit(event.getParticipantLimit())
                 .requestModeration(event.getRequestModeration())
@@ -48,7 +50,7 @@ public class EventMapper {
                 .build();
     }
 
-    public Event toEvent(NewEventDto newEventDTO) {
+    public Event toEvent(NewEventDto newEventDTO, Location location) {
         return Event.builder()
                 .eventDate(newEventDTO.getEventDate())
                 .title(newEventDTO.getTitle())
@@ -57,7 +59,7 @@ public class EventMapper {
                 .paid(newEventDTO.getPaid())
                 .requestModeration(newEventDTO.getRequestModeration())
                 .participantLimit(newEventDTO.getParticipantLimit())
-                .location(newEventDTO.getLocation())
+                .location(location)
                 .createdOn(LocalDateTime.now())
                 .build();
     }
