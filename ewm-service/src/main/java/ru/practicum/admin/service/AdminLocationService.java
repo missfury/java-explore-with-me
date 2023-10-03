@@ -9,7 +9,10 @@ import java.util.List;
 
 public interface AdminLocationService {
     LocationFullDto addLocation(NewLocationDto locationDTO);
+
     LocationFullDto updateLocation(Long id, UpdateLocationDto updateLocationDto);
+
     void deleteLocation(Long id);
+
     List<LocationFullDto> getAllLocations(Pageable pageable);
 }

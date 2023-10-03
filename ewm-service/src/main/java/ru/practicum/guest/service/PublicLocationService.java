@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface PublicLocationService {
     LocationFullDto getLocation(long id);
+
     List<LocationFullDto> getLocations(Pageable pageable);
 
 }
