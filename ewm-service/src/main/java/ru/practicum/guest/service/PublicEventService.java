@@ -15,6 +15,7 @@ public interface PublicEventService {
     List<EventShortDto> getEvents(String text, List<Long> categories, Boolean paid,
                                   LocalDateTime rangeStart, LocalDateTime rangeEnd, Boolean onlyAvailable,
                                   SortEvents sort, Integer from, Integer size, HttpServletRequest request);
+
     List<EventShortDto> getEventsInLocation(Long locationId, Float lat, Float lon,
                                                 Float radius, Pageable pageable);
 
