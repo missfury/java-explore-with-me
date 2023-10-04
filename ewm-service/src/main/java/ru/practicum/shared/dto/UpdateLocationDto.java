@@ -3,7 +3,6 @@ package ru.practicum.shared.dto;
 import lombok.*;
 import ru.practicum.shared.util.enums.LocationStatus;
 
-import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 @Getter
