@@ -341,7 +341,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/users/1/locations",
+					"raw": "http://localhost:8080/users/136/locations",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -349,7 +349,7 @@
 					"port": "8080",
 					"path": [
 						"users",
-						"1",
+						"136",
 						"locations"
 					]
 				}
@@ -399,7 +399,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/admin/locations/2",
+					"raw": "http://localhost:8080/admin/locations/110",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -408,7 +408,7 @@
 					"path": [
 						"admin",
 						"locations",
-						"2"
+						"110"
 					]
 				}
 			},
@@ -514,7 +514,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"annotation\": \"Идем с компанией на премьеру в кино\",\r\n    \"category\": 1,\r\n    \"description\": \"Идем смотреть компанией Зведные войны\",\r\n    \"eventDate\": \"2023-12-12 19:00:00\",\r\n    \"location\": \r\n       {\r\n           \"lat\": 52.8829,\r\n           \"lon\": 13.3356           \r\n        },\r\n    \"paid\": true,\r\n    \"participantLimit\": 10,\r\n    \"requestModeration\": false,\r\n    \"title\": \"Новые Звездные Войны\"\r\n    }",
+					"raw": "{\r\n    \"annotation\": \"Идем с компанией на премьеру в кино\",\r\n    \"category\": 121,\r\n    \"description\": \"Идем смотреть компанией Зведные войны\",\r\n    \"eventDate\": \"2023-12-12 19:00:00\",\r\n    \"location\": \r\n       {\r\n           \"lat\": 52.8829,\r\n           \"lon\": 13.3356           \r\n        },\r\n    \"paid\": true,\r\n    \"participantLimit\": 10,\r\n    \"requestModeration\": false,\r\n    \"title\": \"Новые Звездные Войны\"\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -585,7 +585,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/admin/events/1",
+					"raw": "http://localhost:8080/admin/events/106",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -594,7 +594,7 @@
 					"path": [
 						"admin",
 						"events",
-						"1"
+						"106"
 					]
 				}
 			},
@@ -643,7 +643,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/admin/locations/1",
+					"raw": "http://localhost:8080/admin/locations/109",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -652,7 +652,7 @@
 					"path": [
 						"admin",
 						"locations",
-						"1"
+						"109"
 					]
 				}
 			},
@@ -756,7 +756,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"annotation\": \"Мы тоже идем с компанией на премьеру в кино\",\r\n    \"category\": 1,\r\n    \"description\": \"Идем смотреть компанией Зведные войны в костюмах эвоков\",\r\n    \"eventDate\": \"2023-12-12 19:00:00\",\r\n    \"location\": \r\n       {\r\n           \"lat\": 52.1111,\r\n           \"lon\": 13.1111           \r\n        },\r\n    \"paid\": true,\r\n    \"participantLimit\": 5,\r\n    \"requestModeration\": false,\r\n    \"title\": \"Звездные Войны премьера\"\r\n    }",
+					"raw": "{\r\n    \"annotation\": \"Мы тоже идем с компанией на премьеру в кино\",\r\n    \"category\": 121,\r\n    \"description\": \"Идем смотреть компанией Зведные войны в костюмах эвоков\",\r\n    \"eventDate\": \"2023-12-12 19:00:00\",\r\n    \"location\": \r\n       {\r\n           \"lat\": 52.1111,\r\n           \"lon\": 13.1111           \r\n        },\r\n    \"paid\": true,\r\n    \"participantLimit\": 5,\r\n    \"requestModeration\": false,\r\n    \"title\": \"Звездные Войны премьера\"\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -800,7 +800,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/locations/1",
+					"raw": "http://localhost:8080/locations/109",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -808,7 +808,7 @@
 					"port": "8080",
 					"path": [
 						"locations",
-						"1"
+						"109"
 					]
 				}
 			},
@@ -836,7 +836,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/events/locations?locationId=1",
+					"raw": "http://localhost:8080/events/locations?locationId=109",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -849,7 +849,7 @@
 					"query": [
 						{
 							"key": "locationId",
-							"value": "1"
+							"value": "109"
 						}
 					]
 				}
@@ -978,7 +978,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/admin/events/2",
+					"raw": "http://localhost:8080/admin/events/107",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -987,7 +987,7 @@
 					"path": [
 						"admin",
 						"events",
-						"2"
+						"107"
 					]
 				}
 			},
@@ -1114,7 +1114,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/admin/locations/1",
+					"raw": "http://localhost:8080/admin/locations/109",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1123,7 +1123,7 @@
 					"path": [
 						"admin",
 						"locations",
-						"1"
+						"109"
 					]
 				}
 			},
