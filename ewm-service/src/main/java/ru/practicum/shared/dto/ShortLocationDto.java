@@ -2,7 +2,6 @@ package ru.practicum.shared.dto;
 
 import lombok.*;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Getter
@@ -15,6 +14,4 @@ public class ShortLocationDto {
     private float lat;
     @NotNull
     private float lon;
-    @NotBlank
-    private String address;
 }
