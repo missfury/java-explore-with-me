@@ -23,7 +23,6 @@ public class LocationMapper {
                 .address(newLocationDto.getAddress())
                 .lat(newLocationDto.getLat())
                 .lon(newLocationDto.getLon())
-                .radius(newLocationDto.getRadius())
                 .build();
     }
 
@@ -35,7 +34,6 @@ public class LocationMapper {
                 .lat(location.getLat())
                 .lon(location.getLon())
                 .status(location.getStatus())
-                .radius(location.getRadius())
                 .build();
     }
 
@@ -46,7 +44,6 @@ public class LocationMapper {
                 .address(location.getAddress())
                 .lat(location.getLat())
                 .lon(location.getLon())
-                .radius(location.getRadius())
                 .status(location.getStatus())
                 .build();
     }

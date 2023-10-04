@@ -18,7 +18,5 @@ public class UpdateLocationDto {
     private String name;
     @Size(max = 1000)
     private String address;
-    @Positive
-    private Float radius;
     private LocationStatus status;
 }

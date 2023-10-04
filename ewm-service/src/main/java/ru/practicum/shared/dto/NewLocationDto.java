@@ -19,6 +19,5 @@ public class NewLocationDto {
     private Float lat;
     @NotNull
     private Float lon;
-    private Float radius;
 
 }

@@ -14,6 +14,5 @@ public class LocationFullDto {
     private Float lon;
     private String name;
     private String address;
-    private Float radius;
     private LocationStatus status;
 }

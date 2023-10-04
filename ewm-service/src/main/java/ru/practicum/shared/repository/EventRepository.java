@@ -81,12 +81,13 @@ public interface EventRepository extends JpaRepository<Event, Long> {
             "AND e.state = :state " +
             "ORDER BY e.eventDate DESC ")
     List<Event> findEventsFromLocationRadius(
-            Float lat,
-            Float lon,
+            @Param("lat") Float lat,
+            @Param("lon") Float lon,
             @Param("radius") Float radius,
             State state,
             Pageable pageable);
 
+    List<Event> findByLocationIdAndState(Long locationId, State state, Pageable pageable);
 
 
 }

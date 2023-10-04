@@ -222,7 +222,6 @@ public class PrivateEventServiceImpl implements PrivateEventService {
             newLocation.setLon(locationDto.getLon());
             newLocation.setName(newLocation.getName());
             newLocation.setName(newLocation.getAddress());
-            newLocation.setName(String.valueOf(newLocation.getRadius()));
             newLocation.setStatus(LocationStatus.SUGGESTED);
 
             return locationRepository.save(newLocation);

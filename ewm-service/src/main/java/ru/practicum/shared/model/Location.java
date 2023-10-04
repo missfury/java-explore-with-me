@@ -29,10 +29,12 @@ public class Location {
     @Column(name = "lon")
     private Float lon;
 
-    @Column(name = "radius")
-    private Float radius;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private LocationStatus status;
+
+    public Location(Float lat, Float lon) {
+        this.lat = lat;
+        this.lon = lon;
+    }
 }

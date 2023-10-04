@@ -130,13 +130,11 @@ public class PublicEventServiceImpl implements PublicEventService {
                                                        Pageable pageable) {
         List<Event> events;
 
-        if (locationId != null) {
+        if (locationId != null && lat == null && lon == null) {
             Location location = locationRepository.findById(locationId).orElseThrow(
                     () -> new NotFoundException("Локация не найдена"));
-            events = eventRepository.findEventsFromLocationRadius(
-                    location.getLat(),
-                    location.getLon(),
-                    location.getRadius(),
+            events = eventRepository.findByLocationIdAndState(
+                    location.getId(),
                     State.PUBLISHED,
                     pageable);
         } else {

@@ -23,13 +23,12 @@
 							"pm.test(\"Если локацию создает администратор, статус по умолчанию должен быть APPROVED\", function () {\r",
 							"    pm.expect(target.status).equal(\"APPROVED\");\r",
 							"});\r",
-							"pm.test(\"В ответе должны присутствовать поля id, name, address, lat, lon, radius, status\", function () {\r",
+							"pm.test(\"В ответе должны присутствовать поля id, name, address, lat, lon, status\", function () {\r",
 							"    pm.expect(target).to.have.property('id');\r",
 							"    pm.expect(target).to.have.property('name');\r",
 							"    pm.expect(target).to.have.property('address');\r",
 							"    pm.expect(target).to.have.property('lat');\r",
-							"    pm.expect(target).to.have.property('lon');\r",
-							"    pm.expect(target).to.have.property('radius');\r",
+							"    pm.expect(target).to.have.property('lon');    \r",
 							"    pm.expect(target).to.have.property('status');  \r",
 							"});"
 						],
@@ -42,7 +41,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Театр Зеленый\",\r\n    \"address\": \"Москва, ул. Зеленая, д. 10\",\r\n    \"lat\": 52.8829,\r\n    \"lon\": 13.3356,\r\n    \"radius\": 2.0\r\n}",
+					"raw": "{\r\n    \"name\": \"Театр Зеленый\",\r\n    \"address\": \"Москва, ул. Зеленая, д. 10\",\r\n    \"lat\": 52.8829,\r\n    \"lon\": 13.3356    \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -86,7 +85,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \" \",\r\n    \"address\": \"Тверь, ул. Парковая, д. 2\",\r\n    \"lat\": 55.5200,\r\n    \"lon\": 11.4550,  \r\n    \"radius\": 3\r\n}",
+					"raw": "{\r\n    \"name\": \" \",\r\n    \"address\": \"Тверь, ул. Парковая, д. 2\",\r\n    \"lat\": 55.5200,\r\n    \"lon\": 11.4550     \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -130,7 +129,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Театр Зеленый\",\r\n    \"address\": \"Москва, ул. Зеленая, д. 10\",\r\n    \"lat\": 52.5200,\r\n    \"lon\": 13.4050,\r\n    \"radius\": 3\r\n}",
+					"raw": "{\r\n    \"name\": \"Театр Зеленый\",\r\n    \"address\": \"Москва, ул. Зеленая, д. 10\",\r\n    \"lat\": 52.5200,\r\n    \"lon\": 13.4050    \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -174,7 +173,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Книжный магазин\",\r\n    \"address\": \"Москва, ул. Кирова, д. 10\",\r\n    \"lat\": 52.8829,\r\n    \"lon\": 13.3356,\r\n    \"radius\": 3\r\n}",
+					"raw": "{\r\n    \"name\": \"Книжный магазин\",\r\n    \"address\": \"Москва, ул. Кирова, д. 10\",\r\n    \"lat\": 52.8829,\r\n    \"lon\": 13.3356    \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -218,7 +217,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Кинотеарт Юность\",\r\n    \"address\": \"Воронеж, ул. Ленина, д. 3\",    \r\n    \"radius\": 2\r\n}",
+					"raw": "{\r\n    \"name\": \"Кинотеарт Юность\",\r\n    \"address\": \"Воронеж, ул. Ленина, д. 3\"   \r\n    \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -316,13 +315,12 @@
 							"pm.test(\"Если локацию создает администратор, статус по умолчанию должен быть SUGGESTED\", function () {\r",
 							"    pm.expect(target.status).equal(\"SUGGESTED\");\r",
 							"});\r",
-							"pm.test(\"В ответе должны присутствовать поля id, name, address, lat, lon, radius, status\", function () {\r",
+							"pm.test(\"В ответе должны присутствовать поля id, name, address, lat, lon, status\", function () {\r",
 							"    pm.expect(target).to.have.property('id');\r",
 							"    pm.expect(target).to.have.property('name');\r",
 							"    pm.expect(target).to.have.property('address');\r",
 							"    pm.expect(target).to.have.property('lat');\r",
-							"    pm.expect(target).to.have.property('lon');\r",
-							"    pm.expect(target).to.have.property('radius');\r",
+							"    pm.expect(target).to.have.property('lon');    \r",
 							"    pm.expect(target).to.have.property('status');  \r",
 							"});"
 						],
@@ -335,7 +333,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{   \r\n    \"name\": \"Кинотеатр Маяк\",\r\n    \"address\": \"Москва, ул. Беговая, д. 10\",\r\n    \"lat\": 21.5230,\r\n    \"lon\": 13.4850,\r\n    \"radius\": 2\r\n}",
+					"raw": "{   \r\n    \"name\": \"Кинотеатр Маяк\",\r\n    \"address\": \"Москва, ул. Беговая, д. 10\",\r\n    \"lat\": 21.5230,\r\n    \"lon\": 13.4850    \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -517,7 +515,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"annotation\": \"Идем с компанией на премьеру в кино\",\r\n    \"category\": 1,\r\n    \"description\": \"Идем смотреть компанией Зведные войны\",\r\n    \"eventDate\": \"2023-12-12 19:00:00\",\r\n    \"location\": \r\n       {\r\n           \"lat\": 52.8829,\r\n           \"lon\": 13.3356\r\n        },\r\n    \"paid\": true,\r\n    \"participantLimit\": 10,\r\n    \"requestModeration\": false,\r\n    \"title\": \"Новые Звездные Войны\"\r\n    }",
+					"raw": "{\r\n    \"annotation\": \"Идем с компанией на премьеру в кино\",\r\n    \"category\": 1,\r\n    \"description\": \"Идем смотреть компанией Зведные войны\",\r\n    \"eventDate\": \"2023-12-12 19:00:00\",\r\n    \"location\": \r\n       {\r\n           \"lat\": 52.8829,\r\n           \"lon\": 13.3356           \r\n        },\r\n    \"paid\": true,\r\n    \"participantLimit\": 10,\r\n    \"requestModeration\": false,\r\n    \"title\": \"Новые Звездные Войны\"\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -620,13 +618,12 @@
 							"pm.test(\"Администратор утверждает локацию\", function () {\r",
 							"    pm.expect(target.status).equal(\"APPROVED\");\r",
 							"});\r",
-							"pm.test(\"В ответе должны присутствовать поля id, name, address, lat, lon, radius, status\", function () {\r",
+							"pm.test(\"В ответе должны присутствовать поля id, name, address, lat, lon, status\", function () {\r",
 							"    pm.expect(target).to.have.property('id');\r",
 							"    pm.expect(target).to.have.property('name');\r",
 							"    pm.expect(target).to.have.property('address');\r",
 							"    pm.expect(target).to.have.property('lat');\r",
-							"    pm.expect(target).to.have.property('lon');\r",
-							"    pm.expect(target).to.have.property('radius');\r",
+							"    pm.expect(target).to.have.property('lon');    \r",
 							"    pm.expect(target).to.have.property('status');  \r",
 							"});"
 						],
@@ -639,7 +636,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{    \r\n    \"name\": \"Кинотеатр Старт\",\r\n    \"address\": \"Москва, бульвар Пионеров, 22\",\r\n    \"radius\": 2.0,\r\n    \"status\": \"APPROVED\",\r\n    \"lat\": 21.5222\r\n}",
+					"raw": "{    \r\n    \"name\": \"Кинотеатр Старт\",\r\n    \"address\": \"Москва, бульвар Пионеров, 22a\",    \r\n    \"status\": \"APPROVED\"    \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -657,6 +654,127 @@
 						"admin",
 						"locations",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Добавление еще одной локации администратором",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+							"    pm.response.to.have.status(201); \r",
+							"    pm.response.to.be.withBody; \r",
+							"    pm.response.to.be.json; \r",
+							"}); \r",
+							"const source = JSON.parse(pm.request.body.raw);\r",
+							"const target = pm.response.json();\r",
+							"pm.test(\"Если локацию создает администратор, статус по умолчанию должен быть APPROVED\", function () {\r",
+							"    pm.expect(target.status).equal(\"APPROVED\");\r",
+							"});\r",
+							"pm.test(\"В ответе должны присутствовать поля id, name, address, lat, lon, status\", function () {\r",
+							"    pm.expect(target).to.have.property('id');\r",
+							"    pm.expect(target).to.have.property('name');\r",
+							"    pm.expect(target).to.have.property('address');\r",
+							"    pm.expect(target).to.have.property('lat');\r",
+							"    pm.expect(target).to.have.property('lon');    \r",
+							"    pm.expect(target).to.have.property('status');  \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Театр 1 \",\r\n    \"address\": \"Москва, ул. Зеленая, д. 22\",\r\n    \"lat\": 52.1111,\r\n    \"lon\": 13.1111,    \r\n    \"radius\": 2.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/locations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"locations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Добавление еще одного события",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function () {\r",
+							"    pm.response.to.have.status(201);  \r",
+							"    pm.response.to.be.withBody;\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"const source = JSON.parse(pm.request.body.raw);\r",
+							"const target = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Событие должно содержать поля: id, title, annotation, category, paid, eventDate, initiator, description, participantLimit, state, createdOn, location, requestModeration\", function () {\r",
+							"pm.expect(target).to.have.property('id');\r",
+							"pm.expect(target).to.have.property('title');\r",
+							"pm.expect(target).to.have.property('annotation');\r",
+							"pm.expect(target).to.have.property('category');\r",
+							"pm.expect(target).to.have.property('paid');\r",
+							"pm.expect(target).to.have.property('eventDate');\r",
+							"pm.expect(target).to.have.property('initiator');\r",
+							"pm.expect(target).to.have.property('description');\r",
+							"pm.expect(target).to.have.property('participantLimit');\r",
+							"pm.expect(target).to.have.property('state');\r",
+							"pm.expect(target).to.have.property('createdOn');\r",
+							"pm.expect(target).to.have.property('location');\r",
+							"pm.expect(target).to.have.property('requestModeration');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"annotation\": \"Мы тоже идем с компанией на премьеру в кино\",\r\n    \"category\": 1,\r\n    \"description\": \"Идем смотреть компанией Зведные войны\",\r\n    \"eventDate\": \"2023-12-12 19:00:00\",\r\n    \"location\": \r\n       {\r\n           \"lat\": 52.1111,\r\n           \"lon\": 13.1111           \r\n        },\r\n    \"paid\": true,\r\n    \"participantLimit\": 10,\r\n    \"requestModeration\": false,\r\n    \"title\": \"Звездные Войны\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users/1/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"1",
+						"events"
 					]
 				}
 			},
@@ -808,6 +926,171 @@
 					"port": "8080",
 					"path": [
 						"locations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Подтверждение статуса события",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+							"    pm.response.to.have.status(200);  \r",
+							"    pm.response.to.be.withBody;\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"const source = JSON.parse(pm.request.body.raw);\r",
+							"const target = pm.response.json();\r",
+							"pm.test(\"Событие должно содержать поля: id, title, annotation, category, paid, eventDate, initiator, description, participantLimit, state, createdOn, location, requestModeration\", function () {\r",
+							"pm.expect(target).to.have.property('id');\r",
+							"pm.expect(target).to.have.property('title');\r",
+							"pm.expect(target).to.have.property('annotation');\r",
+							"pm.expect(target).to.have.property('category');\r",
+							"pm.expect(target).to.have.property('paid');\r",
+							"pm.expect(target).to.have.property('eventDate');\r",
+							"pm.expect(target).to.have.property('initiator');\r",
+							"pm.expect(target).to.have.property('description');\r",
+							"pm.expect(target).to.have.property('participantLimit');\r",
+							"pm.expect(target).to.have.property('state');\r",
+							"pm.expect(target).to.have.property('createdOn');\r",
+							"pm.expect(target).to.have.property('location');\r",
+							"pm.expect(target).to.have.property('requestModeration');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{         \r\n    \"stateAction\": \"PUBLISH_EVENT\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/events/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"events",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Поиск по радиусу",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200 and response is an array of size 1\", \r",
+							"function () {\r",
+							"   pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+							"   pm.expect(pm.response.json()).to.be.an('array');\r",
+							"   pm.expect(pm.response.json()).to.have.length(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/events/locations/?lat=52.1122&lon=13.1122&radius=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"events",
+						"locations",
+						""
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "52.1122"
+						},
+						{
+							"key": "lon",
+							"value": "13.1122"
+						},
+						{
+							"key": "radius",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Еще поиск по радиусу",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200 and response is an array of size 1\", \r",
+							"function () {\r",
+							"   pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+							"   pm.expect(pm.response.json()).to.be.an('array');\r",
+							"   pm.expect(pm.response.json()).to.have.length(2);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/events/locations/?lat=54.11112&lon=123.1111123&radius=200000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"events",
+						"locations",
+						""
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "54.11112"
+						},
+						{
+							"key": "lon",
+							"value": "123.1111123"
+						},
+						{
+							"key": "radius",
+							"value": "200000"
+						}
 					]
 				}
 			},

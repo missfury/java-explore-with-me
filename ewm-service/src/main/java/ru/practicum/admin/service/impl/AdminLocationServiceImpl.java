@@ -57,9 +57,6 @@ public class AdminLocationServiceImpl implements AdminLocationService {
         if (updateLocationDto.getAddress() != null) {
             location.setAddress(updateLocationDto.getAddress());
         }
-        if (updateLocationDto.getRadius() != null) {
-            location.setRadius(updateLocationDto.getRadius());
-        }
         if (updateLocationDto.getStatus() != null) {
             location.setStatus(updateLocationDto.getStatus());
         }

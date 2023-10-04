@@ -148,7 +148,6 @@ public class AdminEventServiceImpl implements AdminEventService {
             newLocation.setLon(locationDto.getLon());
             newLocation.setName(newLocation.getName());
             newLocation.setName(newLocation.getAddress());
-            newLocation.setName(String.valueOf(newLocation.getRadius()));
             newLocation.setStatus(LocationStatus.APPROVED);
 
             return locationRepository.save(newLocation);
