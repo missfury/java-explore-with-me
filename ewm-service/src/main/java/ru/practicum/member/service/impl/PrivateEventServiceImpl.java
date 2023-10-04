@@ -12,6 +12,7 @@ import ru.practicum.shared.mapper.EventMapper;
 import ru.practicum.shared.mapper.RequestMapper;
 import ru.practicum.shared.model.*;
 import ru.practicum.shared.repository.*;
+import ru.practicum.shared.util.enums.LocationStatus;
 import ru.practicum.shared.util.enums.RequestStatus;
 import ru.practicum.shared.util.enums.State;
 import ru.practicum.shared.util.enums.UserActions;
@@ -219,6 +220,10 @@ public class PrivateEventServiceImpl implements PrivateEventService {
             Location newLocation = new Location();
             newLocation.setLat(locationDto.getLat());
             newLocation.setLon(locationDto.getLon());
+            newLocation.setName(newLocation.getName());
+            newLocation.setName(locationDto.getAddress());
+            newLocation.setName(String.valueOf(newLocation.getRadius()));
+            newLocation.setStatus(LocationStatus.SUGGESTED);
 
             return locationRepository.save(newLocation);
         }

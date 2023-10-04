@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.admin.service.AdminEventService;
 import ru.practicum.shared.dto.EventFullDto;
+import ru.practicum.shared.dto.NewLocationDto;
 import ru.practicum.shared.dto.ShortLocationDto;
 import ru.practicum.shared.dto.UpdateEventAdminRequest;
 import ru.practicum.shared.exceptions.NotFoundException;
@@ -20,6 +21,7 @@ import ru.practicum.shared.repository.EventRepository;
 import ru.practicum.shared.repository.LocationRepository;
 import ru.practicum.shared.repository.RequestRepository;
 import ru.practicum.shared.util.enums.AdminActions;
+import ru.practicum.shared.util.enums.LocationStatus;
 import ru.practicum.shared.util.enums.RequestStatus;
 import ru.practicum.shared.util.enums.State;
 
@@ -145,6 +147,10 @@ public class AdminEventServiceImpl implements AdminEventService {
             Location newLocation = new Location();
             newLocation.setLat(locationDto.getLat());
             newLocation.setLon(locationDto.getLon());
+            newLocation.setName(newLocation.getName());
+            newLocation.setName(newLocation.getAddress());
+            newLocation.setName(String.valueOf(newLocation.getRadius()));
+            newLocation.setStatus(LocationStatus.APPROVED);
 
             return locationRepository.save(newLocation);
         }
