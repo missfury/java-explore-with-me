@@ -373,13 +373,12 @@
 							"pm.test(\"Администратор утверждает локацию\", function () {\r",
 							"    pm.expect(target.status).equal(\"APPROVED\");\r",
 							"});\r",
-							"pm.test(\"В ответе должны присутствовать поля id, name, address, lat, lon, radius, status\", function () {\r",
+							"pm.test(\"В ответе должны присутствовать поля id, name, address, lat, lon, status\", function () {\r",
 							"    pm.expect(target).to.have.property('id');\r",
 							"    pm.expect(target).to.have.property('name');\r",
 							"    pm.expect(target).to.have.property('address');\r",
 							"    pm.expect(target).to.have.property('lat');\r",
-							"    pm.expect(target).to.have.property('lon');\r",
-							"    pm.expect(target).to.have.property('radius');\r",
+							"    pm.expect(target).to.have.property('lon');    \r",
 							"    pm.expect(target).to.have.property('status');  \r",
 							"});"
 						],
@@ -694,7 +693,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Театр 1 \",\r\n    \"address\": \"Москва, ул. Зеленая, д. 22\",\r\n    \"lat\": 52.1111,\r\n    \"lon\": 13.1111,    \r\n    \"radius\": 2.0\r\n}",
+					"raw": "{\r\n    \"name\": \"Кинотеатр Звезда \",\r\n    \"address\": \"Москва, ул. Зеленая, д. 22\",\r\n    \"lat\": 52.1111,\r\n    \"lon\": 13.1111    \r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -757,7 +756,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"annotation\": \"Мы тоже идем с компанией на премьеру в кино\",\r\n    \"category\": 1,\r\n    \"description\": \"Идем смотреть компанией Зведные войны\",\r\n    \"eventDate\": \"2023-12-12 19:00:00\",\r\n    \"location\": \r\n       {\r\n           \"lat\": 52.1111,\r\n           \"lon\": 13.1111           \r\n        },\r\n    \"paid\": true,\r\n    \"participantLimit\": 10,\r\n    \"requestModeration\": false,\r\n    \"title\": \"Звездные Войны\"\r\n    }",
+					"raw": "{\r\n    \"annotation\": \"Мы тоже идем с компанией на премьеру в кино\",\r\n    \"category\": 1,\r\n    \"description\": \"Идем смотреть компанией Зведные войны в костюмах эвоков\",\r\n    \"eventDate\": \"2023-12-12 19:00:00\",\r\n    \"location\": \r\n       {\r\n           \"lat\": 52.1111,\r\n           \"lon\": 13.1111           \r\n        },\r\n    \"paid\": true,\r\n    \"participantLimit\": 5,\r\n    \"requestModeration\": false,\r\n    \"title\": \"Звездные Войны премьера\"\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
