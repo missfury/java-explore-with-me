@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.admin.service.AdminEventService;
 import ru.practicum.shared.dto.EventFullDto;
-import ru.practicum.shared.dto.NewLocationDto;
 import ru.practicum.shared.dto.ShortLocationDto;
 import ru.practicum.shared.dto.UpdateEventAdminRequest;
 import ru.practicum.shared.exceptions.NotFoundException;
