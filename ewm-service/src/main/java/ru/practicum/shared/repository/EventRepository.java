@@ -75,6 +75,19 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     List<Event> findEventsByFilters(List<Long> users, List<State> states, List<Long> categories,
                                     LocalDateTime start, LocalDateTime end, Pageable pageable);
 
+    @Query("SELECT e FROM Event e " +
+            "WHERE FUNCTION('distance', :lat, :lon, e.location.lat, e.location.lon) " +
+            "<= :radius " +
+            "AND e.state = :state " +
+            "ORDER BY e.eventDate DESC ")
+    List<Event> findEventsFromLocationRadius(
+            @Param("lat") Float lat,
+            @Param("lon") Float lon,
+            @Param("radius") Float radius,
+            State state,
+            Pageable pageable);
+
+    List<Event> findByLocationIdAndState(Long locationId, State state, Pageable pageable);
 
 
 }

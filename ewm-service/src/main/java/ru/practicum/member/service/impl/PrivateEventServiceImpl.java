@@ -10,14 +10,9 @@ import ru.practicum.shared.exceptions.ValidateDateException;
 import ru.practicum.shared.exceptions.ValidateException;
 import ru.practicum.shared.mapper.EventMapper;
 import ru.practicum.shared.mapper.RequestMapper;
-import ru.practicum.shared.model.Category;
-import ru.practicum.shared.model.Event;
-import ru.practicum.shared.model.Request;
-import ru.practicum.shared.model.User;
-import ru.practicum.shared.repository.CategoryRepository;
-import ru.practicum.shared.repository.EventRepository;
-import ru.practicum.shared.repository.RequestRepository;
-import ru.practicum.shared.repository.UserRepository;
+import ru.practicum.shared.model.*;
+import ru.practicum.shared.repository.*;
+import ru.practicum.shared.util.enums.LocationStatus;
 import ru.practicum.shared.util.enums.RequestStatus;
 import ru.practicum.shared.util.enums.State;
 import ru.practicum.shared.util.enums.UserActions;
@@ -36,6 +31,7 @@ public class PrivateEventServiceImpl implements PrivateEventService {
     private final EventRepository eventRepository;
     private final UserRepository userRepository;
     private final CategoryRepository categoryRepository;
+    private final LocationRepository locationRepository;
     private final EventMapper eventMapper;
     private final RequestMapper requestsMapper;
 
@@ -43,10 +39,10 @@ public class PrivateEventServiceImpl implements PrivateEventService {
     public EventFullDto addEvent(Long userId, NewEventDto newEventDto) {
         User user = getUser(userId);
         Category category = getCategory(newEventDto.getCategory());
-
+        Location location = getLocation(newEventDto.getLocation());
         checkEventDate(newEventDto.getEventDate());
 
-        Event event = eventMapper.toEvent(newEventDto);
+        Event event = eventMapper.toEvent(newEventDto, location);
         event.setInitiator(user);
         event.setCategory(category);
         event.setState(State.PENDING);
@@ -113,7 +109,8 @@ public class PrivateEventServiceImpl implements PrivateEventService {
         }
 
         if (updateEventUserRequest.getLocation() != null) {
-            event.setLocation(updateEventUserRequest.getLocation());
+            Location location = getLocation(updateEventUserRequest.getLocation());
+            event.setLocation(location);
         }
 
         if (updateEventUserRequest.getPaid() != null) {
@@ -212,6 +209,23 @@ public class PrivateEventServiceImpl implements PrivateEventService {
         return eventRepository.findEventByIdAndInitiatorId(eventId, userId)
                 .orElseThrow(() -> new NotFoundException(
                         String.format("Failed to find event with id=%s, user id=%s", eventId, userId)));
+    }
+
+    private Location getLocation(ShortLocationDto locationDto) {
+        Location existingLocation = locationRepository.findByLatAndLon(locationDto.getLat(), locationDto.getLon());
+
+        if (existingLocation != null) {
+            return existingLocation;
+        } else {
+            Location newLocation = new Location();
+            newLocation.setLat(locationDto.getLat());
+            newLocation.setLon(locationDto.getLon());
+            newLocation.setName(newLocation.getName());
+            newLocation.setName(newLocation.getAddress());
+            newLocation.setStatus(LocationStatus.SUGGESTED);
+
+            return locationRepository.save(newLocation);
+        }
     }
 
     private void checkEventDate(LocalDateTime eventDate) {

@@ -2,6 +2,7 @@ package ru.practicum.guest.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,8 +14,10 @@ import ru.practicum.shared.exceptions.NotFoundException;
 import ru.practicum.shared.exceptions.ValidateDateException;
 import ru.practicum.shared.mapper.EventMapper;
 import ru.practicum.shared.model.Event;
+import ru.practicum.shared.model.Location;
 import ru.practicum.shared.model.Request;
 import ru.practicum.shared.repository.EventRepository;
+import ru.practicum.shared.repository.LocationRepository;
 import ru.practicum.shared.repository.RequestRepository;
 import ru.practicum.shared.util.Pagination;
 import ru.practicum.shared.util.enums.RequestStatus;
@@ -44,6 +47,7 @@ public class PublicEventServiceImpl implements PublicEventService {
 
     private final EventRepository eventRepository;
     private final RequestRepository requestRepository;
+    private final LocationRepository locationRepository;
     private final EventMapper eventMapper;
     private final StatsClient statsClient;
 
@@ -119,6 +123,31 @@ public class PublicEventServiceImpl implements PublicEventService {
         }
 
         return result;
+    }
+
+    @Override
+    public List<EventShortDto> getEventsInLocation(Long locationId, Float lat, Float lon, Float radius,
+                                                       Pageable pageable) {
+        List<Event> events;
+
+        if (locationId != null && lat == null && lon == null) {
+            Location location = locationRepository.findById(locationId).orElseThrow(
+                    () -> new NotFoundException("Локация не найдена"));
+            events = eventRepository.findByLocationIdAndState(
+                    location.getId(),
+                    State.PUBLISHED,
+                    pageable);
+        } else {
+            if (lat == null || lon == null) {
+                throw new NotFoundException("Координаты не указаны");
+            } else {
+                events = eventRepository.findEventsFromLocationRadius(
+                        lat, lon, radius, State.PUBLISHED, pageable);
+            }
+        }
+        List<EventShortDto> result = events.stream().map(eventMapper::toEventShortDto).collect(Collectors.toList());
+        return result;
+
     }
 
     public void confirmedRequestsForOneEvent(Event event) {
